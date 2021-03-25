@@ -71,27 +71,31 @@ input {
 }
 
 #inputWhere{
-  width: 280px;
+  width: 200px;
   padding-left: 15px;
 }
 
 #inputHowMuch{
-  width: 210px;
+  width: 280px;
   padding-left: 15px;
 }
 
+
+
 .itemWhereEdit {
-  width: 300px;
+  width: 150px;
   height: 30px;
-  
+}
+
+.itemDateEdit {
+  width: 150px;
+  height: 30px;
 }
 
 .itemHowMuchEdit {
   width: 150px;
   height: 30px;
 }
-
-
 
 #inputButton {
   height: 42px;
@@ -127,10 +131,40 @@ input {
 .listItem{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   font-size: 24px;
   margin: 20px 0px;
   /* border: 1px dotted rgb(0, 255, 98); */
+}
+
+.itemWhere{
+  width: 250px;
+  overflow: auto;
+  /* border: 1px dotted rgb(147, 21, 151); */
+}
+
+.itemDate{
+  width: 140px;
+  text-align: center;
+  /* border: 1px dotted rgb(147, 21, 151); */
+}
+
+.itemHowMuch{
+  width: 120px;
+  margin-left: 10px;
+  text-align: right;
+  /* border: 1px dotted rgb(147, 21, 151); */
+}
+
+  
+.itemHowMuch::after {
+  content: " p."
+}
+
+
+.itemChange {
+  /* border: 1px dotted rgb(221, 26, 19); */
+  width: 120px;
 }
 
 
@@ -138,23 +172,70 @@ input {
   width: 30px;
   margin: 0 15px;
 }
+@media(max-width: 690px){
+  .commonContainer{
+    width: 690px;
+  }
 
-.itemWhere{
-  flex-grow: 1;
-  margin: 5px;
+  .containerForInput{
+    width: 590px;
+  }
 
+  #conteinerForTotalSum{
+    width: 500px;
+  }
+
+
+  #inputHowMuch{
+    width:200px;
+  }
+
+
+  .listItem{
+    padding: 0px 10px;
 }
 
-.itemChange {
-  margin-left: 50px;
-  /* border: 1px dotted rgb(147, 21, 151); */
-}
+@media(max-width: 400px){
+  .commonContainer{
+    width: 400px;
+  }
 
-.itemHowMuch::after {
-  content: " p."
-}
+  .containerForInput{
+    text-align: center;
+    height: 240px;
+    width: 400px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
 
+  #containertotalSum {
+    margin-top: 30px;
+    width: 375px;
+    padding-right: 15px;
+  }
 
+  .containerForOutnput{
+    width: 400px;
+    flex-direction: column;
+    align-items: center;
+  }
 
+  #inputHowMuch{
+    width:250px;
+  }
 
+  #inputWhere{
+    width:250px;
+  }
 
+  .listItem {
+    width: 360px;
+    flex-direction: column;
+    padding: 0px 10px;
+  }
+
+  .itemWhere {
+    text-align: right;
+    width: 380px;
+  }
