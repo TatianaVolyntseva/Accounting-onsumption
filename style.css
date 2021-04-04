@@ -1,241 +1,298 @@
-* {
-	vertical-align: baseline;
-	font-weight: inherit;
-	font-family: inherit;
-	font-style: inherit;
-	font-size: 100%;
-	border: 0 none;
-	outline: 0;
-	padding: 0;
-	margin: 0;
-}
-
+  * {
+    vertical-align: baseline;
+    font-weight: inherit;
+    font-family: inherit;
+    font-style: inherit;
+    border: 0 none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+  }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300&display=swap');
 
-body{
-  display: flex;
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 1px;
-}
-
-.commonContainer{
-  width: 800px;
-  box-sizing: border-box;
-  margin: 0 auto;
-  vertical-align: middle;
-  padding: 20px 0px;
-  border: 1px solid gray;
-  border-radius: 4px;
-  background-color: rgba(21, 190, 241, 0.2);
-  opacity: 0.7;
-}
-
-.containerTitle {
-  text-align: center;
-  margin: 20px;
-  /* border: 1px dotted rgb(208, 228, 29); */
-}
-
-.containerTitle h1 {
-  font-size: 38px;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.wrapper{
-  display: flex;
-  flex-direction: column;
-  /* border: 1px dotted purple; */
-}
-
-.containerForInput{
-  display: flex;
-  width: 680px;
-  justify-content: space-between;
-  align-items: flex-end;
-  font-size: 14px;
-  margin: 20px auto;
-  /* border: 1px dotted red;   */
-}
-
-input, label {
-  display: block;
-}
-
-input {
-  height: 40px;
-  border: 1px solid gray;
-  border-radius: 4px;
-  margin-top: 8px;
-}
-
-#inputWhere{
-  width: 200px;
-  padding-left: 15px;
-}
-
-#inputHowMuch{
-  width: 280px;
-  padding-left: 15px;
-}
-
-.itemWhereEdit {
-  width: 200px;
-}
-
-.itemDateEdit {
-  width: 180px;
-  height: 30px;
-}
-
-.itemHowMuchEdit {
-  width: 100px;
-  height: 30px;
-}
-
-#inputButton {
-  height: 42px;
-  width: 110px;
-  font-size: 18px;
-  border: 1px solid gray;
-  border-radius: 4px;
-  background-color: rgb(33, 170, 136);
-}
-
-#containertotalSum { 
-  width: 680px;
-  font-size: 24px;
-  display: flex;
-  justify-content: flex-end;
-  margin: 20px auto;
-}
-
-#totalSum::before { 
-  content: "Итого: ";
-}
-
-#totalSum::after { 
-  content: " p.";
-}
-
-.containerForOutnput{
-  width: 680px;
-  margin: 0 auto;
-}
-
-.listItem{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  font-size: 24px;
-  margin: 20px 0px;
-}
-
-.itemWhere{
-  width: 250px;
-  overflow: auto;
-}
-
-.itemDate{
-  width: 140px;
-  text-align: center;
-}
-
-.itemHowMuch{
-  width: 120px;
-  margin-left: 10px;
-  text-align: right;
-}
-  
-.itemHowMuch::after {
-  content: " p."
-}
-
-.itemChange {
-  width: 120px;
-}
-
-.itemChange img {
-  width: 30px;
-  margin: 0 15px;
-}
-
-@media(max-width: 414px) and (max-height: 823px){
-
   body{
-    width: 100%;
-    height: 100vh;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+  }
+  .commonContainer{
+    width: 800px;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 20px auto;
+    vertical-align: middle;
+    border: 1px solid gray;
+    border-radius: 4px;
+    background-color: rgba(21, 190, 241, 0.2);
+    opacity: 0.7;
+  }
+  .containerTitle {
+    text-align: center;
+    margin: 20px;
+  }
+  .containerTitle h1 {
+    font-size: 38px;
+    font-weight: 300;
+    font-style: italic;
+  }
+  .wrapper{
+    display: flex;
+    flex-direction: column;
+  }
+  .containerForInput{
+    display: flex;
+    width: 680px;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 18px;
+    margin: 20px auto;
+  }
+  input, label {
+    display: block;
+  }
+  input {
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+  #inputWhere{
+    width: 200px;
+    text-align: left;
+    padding-left: 5px;
+  }
+  #inputHowMuch{
+    width: 280px;
+    text-align: left;
+    padding-left: 5px;
+  }
+  #inputButton {
+    height: 42px;
+    width: 110px;
+    font-size: 18px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    background-color: rgb(33, 170, 136);
+  }
+  #containertotalSum { 
+    width: 680px;
+    font-size: 24px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px auto;
+  }
+  #totalSum::before { 
+    content: "Итого: ";
+  }
+  #totalSum::after { 
+    content: " p.";
+  }
+  #containerForOutnput{
+    width: 680px;
+    margin: 0 auto;
+  }
+  .itemOfList{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 24px;
+    margin: 20px 0px;
+  }
+  .itemWhere{
+    width: 250px;
+    overflow: auto;
+  }
+  .itemDate{
+    width: 150px;
+    text-align: center;
+  }
+  .itemHowMuch{
+    width: 120px;
+    margin-left: 10px;
+    text-align: right;
+  }
+  .itemWhereEdit {
+    width: 250px;
+    resize: none;
+    font-size: 18px;
+  }
+  .itemDateEdit {
+    width: 150px;
+    height: 30px;
+    font-size: 18px;
+  }
+  .itemHowMuchEdit {
+    width: 120px;
+    height: 30px;
+    font-size: 18px;
+  }
+  .itemChange {
+    width: 120px;
+  }
+  .itemChange img {
+    width: 30px;
+    margin: 0 15px;
   }
 
+@media(max-width: 415px) and (max-height: 824px){
+  body{
+    width: 100vw;
+    height: 100vh;
+  }
   .commonContainer{
     max-width: 100%;
     padding: 0px;
+    margin: 0 auto;
   }
-
   .containerTitle{
-    height: 12vh;
+    height: 6vh;
     margin-top: 10px;
     margin-bottom: 10px;
   }
-
+  .containerTitle h1{
+    font-size: 32px;  
+  }
   .containerForInput{
     text-align: center;
-    height: 35vh;
+    height: 30vh;
     max-width: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    margin: 5px auto;
   }
-
   .containerForInput label{
     font-size: 20px;
     text-align: -webkit-center;
   }
-
-  .containerForInput label input {
-    font-size: 16px;
-    justify-content: center;
+  #inputWhere{
+    text-align: center;
   }
-  
+  #inputHowMuch{
+    text-align: center;
+  }
+  .containerForInput label input {
+    font-size: 18px;
+  }  
   #containertotalSum {
-    margin-top: 15px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     max-width: 100%;
   }
-
-  .containerForOutnput{
-    height: 29vh;
+  #containerForOutnput{
+    height: 52vh;
     overflow: scroll;
     max-width: 100%;
     flex-direction: column;
     align-items: center; 
   }
-  .listItem{
-    font-size: 1.2rem;
+  .itemOfList{
+    font-size: 22px;
   }
-
   #inputHowMuch{
     width:70vw;
   }
-
   #inputWhere{
     width:70vw;
   }
-
-  .listItem {
+  .itemOfList {
     max-width: 100%;
     flex-direction: column;
     padding: 0px 10px;
+    margin:0px;
   }
-
   .itemWhere {
     text-align: left;
     width: 90vw;
 
   }
-
   .itemDate {
     text-align: center;
     width: 90vw;
+  }
+  .itemWhereEdit {
+    width: 100%;
+    font-size: 18px;
+  }
+  .itemDateEdit {
+    width: 100%;
+    height: 35px;
+    font-size: 18px;
+  }
+    .itemHowMuchEdit {
+    width: 100%;
+    height: 35px;
+    font-size: 18px;
+  }
+}
+
+@media(max-width: 376px) and (max-height: 668px){
+  .containerTitle{
+    height: 4vh;
+    margin-top: 8px;
+  }
+  .containerTitle h1{
+    font-size: 28px;  
+  }
+  .containerForInput{
+    text-align: center;
+    height: 32vh;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px auto;
+  }
+  .containerForInput label{
+    font-size: 14px;
+    text-align: -webkit-center;
+  }
+  input {
+    height: 34px;
+  }
+  .containerForInput label input {
+    font-size:12px;
+  }
+  #containertotalSum {
+    font-size: 20px;
+  }
+  #containerForOutnput{
+    height: 50vh;
+  }
+  .itemOfList {
+    max-width: 100%;
+    flex-direction: column;
+    margin:0px;
+    font-size: 14px;
+  }
+}
+
+@media(max-width: 281px) and (max-height: 654px){
+  .containerTitle{
+    height: 9vh;
+    margin-top: 8px;
+  }
+  .containerTitle h1{
+    font-size: 28px;  
+  }
+  .containerForInput{
+    height: 28vh;      
+  }
+  .containerForInput label{
+    font-size: 16px;
+  }
+  input {
+    height: 32px;
+  }
+  .containerForInput label input {
+    font-size:12px;
+  }
+  #containertotalSum {
+    font-size: 20px;
+  }
+  #containerForOutnput{
+    height: 49vh;
+  }
+  .itemOfList {
+    font-size: 16px;
   }
 }
