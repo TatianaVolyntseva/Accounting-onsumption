@@ -41,6 +41,21 @@ inputHowMuchGet = (e) => {
   inputHowMuchValue = e.target.value;
 }
 
+cleanValues = () => {
+  inputWhereValue = "";
+  inputHowMuchValue = "";
+  inputDateValue = "";
+  inputWhere.value = "";
+  inputHowMuch.value = "";
+}
+
+cleanFlags = () => {
+  editFlag = -1;
+  editFlagInputWhere = -1;
+  editFlagInputHowMuch = -1;
+  editFlagInputDate = -1;
+}
+
 addElementToList = async () => {
   if (inputWhereValue && inputHowMuchValue && editFlag < 0) {
     list.push({
@@ -63,15 +78,12 @@ addElementToList = async () => {
     let result = await resp.json();
     list = result.data;
     localStorage.setItem("list", JSON.stringify(list));  
-    inputWhereValue = "";
-    inputHowMuchValue = "";
-    inputWhere.value = "";
-    inputHowMuch.value = "";
-  } else if (inputWhereValue == "" && inputHowMuchValue){
+    cleanValues();
+  } else if (inputWhereValue ==="" && inputHowMuchValue) {
     alert("Пожалуйста, заполните первое поле");
-  }else if (inputWhereValue  && inputHowMuchValue == ""){
+  } else if (inputWhereValue  && inputHowMuchValue === "") {
     alert("Пожалуйста, заполните второе поле");
-  }else if (inputWhereValue == "" && inputHowMuchValue == ""){
+  } else if (inputWhereValue === "" && inputHowMuchValue === "") {
     alert("Пожалуйста, заполните оба поля");
   } 
   render();
@@ -101,20 +113,13 @@ ImageDone = async (item) => {
       })
     });
   localStorage.setItem("list", JSON.stringify(list));
-  editFlag = -1;
-  editFlagInputWhere = -1;
-  editFlagInputHowMuch = -1;
-  editFlagInputDate = -1;
-  inputWhereValue = "";
-  inputHowMuchValue = "";
-  inputDateValue = "";
-  inputWhere.value = "";
-  inputHowMuch.value = "";
+  cleanFlags();
+  cleanValues();
   render();  
 }
 
 ImageDelete = async (index) => {
-  if(!flagAllItemsChange){
+  if (!flagAllItemsChange) {
     const resp = await fetch(`http://localhost:8000/deleteItem?_id=${list[index]._id} `, {
       method: "DELETE"
     });
@@ -124,10 +129,7 @@ ImageDelete = async (index) => {
     render();
   } else {
     flagAllItemsChange = false;
-    editFlag = -1;
-    editFlagInputWhere = -1;
-    editFlagInputHowMuch = -1;
-    editFlagInputDate = -1;
+    cleanFlags();
     render();
   }
 }
@@ -147,8 +149,8 @@ dbClickItemHowMuch = (index) => {
   render();
 }
 
-blurOnitemWhereEdit = async (index) => {
-  if(!flagAllItemsChange){
+blurOnItemWhereEdit = async (index) => {
+  if (!flagAllItemsChange) {
     list[index].thing = inputWhereValue;
     const resp = await fetch(`http://localhost:8000/changeItem?_id=${list[index]._id}`, {
       method: "PUT",
@@ -169,8 +171,8 @@ blurOnitemWhereEdit = async (index) => {
   }
 }
 
-blurOnitemDateEdit = async (index) => {
-  if(!flagAllItemsChange){
+blurOnItemDateEdit = async (index) => {
+  if (!flagAllItemsChange) {
     list[index].date = inputDateValue;
     const resp = await fetch(`http://localhost:8000/changeItem?_id=${list[index]._id}`, {
       method: "PUT",
@@ -189,8 +191,8 @@ blurOnitemDateEdit = async (index) => {
   }
 }
 
-blurOnitemHowMuchEdit = async (index) => {
-  if(!flagAllItemsChange){
+blurOnItemHowMuchEdit = async (index) => {
+  if (!flagAllItemsChange) {
     const resp = await fetch(`http://localhost:8000/changeItem?_id=${list[index]._id}`, {
       method: "PUT",
       headers: {
@@ -223,7 +225,7 @@ render = () => {
     itemChange.className = "itemChange";
     allItemsHere.appendChild(itemOfList);
     //////////////////////  itemWhere ////////////////////////
-    if((editFlag === index) || (editFlagInputWhere === index)){
+    if ((editFlag === index) || (editFlagInputWhere === index)) {
       let itemWhereEdit = document.createElement("textarea"); //EDIT itemWhere
       itemWhereEdit.id = `itemWhereEdit_${index}`;
       itemWhereEdit.className = "itemWhereEdit";
@@ -232,18 +234,20 @@ render = () => {
       itemWhereEdit.setAttribute("rows", "2");
       itemOfList.appendChild(itemWhereEdit);
       itemWhereEdit.focus();
-      itemWhereEdit.addEventListener("change", () => {inputWhereValue = itemWhereEdit.value});  
-      itemWhereEdit.addEventListener("blur", () => blurOnitemWhereEdit(index));
+      itemWhereEdit.addEventListener("change", () => {
+        inputWhereValue = itemWhereEdit.value;
+      });  
+      itemWhereEdit.addEventListener("blur", () => blurOnItemWhereEdit(index));
     } else { 
       let itemWhere = document.createElement("p");//DON'T edit itemWhere
       itemWhere.id = `itemWhere_${index}`;
       itemWhere.className = "itemWhere";
       itemWhere.innerHTML = `${index+1}) ` + list[index].thing;
       itemOfList.appendChild(itemWhere);
-      itemWhere.addEventListener("dblclick", () => {dbClickItemWhere(index)});
+      itemWhere.addEventListener("dblclick", () => dbClickItemWhere(index));
     }
     /////////////////////// itemDate /////////////////////////
-    if((editFlag === index) || (editFlagInputDate === index)){
+    if ((editFlag === index) || (editFlagInputDate === index)) {
       let itemDateEdit = document.createElement("input");// EDIT itemDate
       itemDateEdit.id = `itemDateEdit_${index}`;
       itemDateEdit.className = "itemDateEdit";
@@ -252,15 +256,17 @@ render = () => {
       inputDateValue = list[index].date;
       itemOfList.appendChild(itemDateEdit);
       itemDateEdit.focus();
-      itemDateEdit.addEventListener("change", () => {inputDateValue = itemDateEdit.value});
-      itemDateEdit.addEventListener("blur", () => blurOnitemDateEdit(index));
+      itemDateEdit.addEventListener("change", () => {
+        inputDateValue = itemDateEdit.value;
+      });
+      itemDateEdit.addEventListener("blur", () => blurOnItemDateEdit(index));
     } else {   
       let itemDate = document.createElement("p");// DON't edit itemDate   
       itemDate.id = `itemDate_${index}`;
       itemDate.className = "itemDate";       
       itemDate.innerHTML = list[index].date;
       itemOfList.appendChild(itemDate);
-      itemDate.addEventListener("dblclick", () => {dbClickItemDate(index)});
+      itemDate.addEventListener("dblclick", () => dbClickItemDate(index));
     }
     ////////////////////// itemHowMuch ///////////////////////
     if ((editFlag === index) || (editFlagInputHowMuch === index)) {
@@ -272,36 +278,38 @@ render = () => {
       inputHowMuchValue = list[index].money;
       itemOfList.appendChild(itemHowMuchEdit);
       itemHowMuchEdit.focus();
-      itemHowMuchEdit.addEventListener("change", () => {inputHowMuchValue = itemHowMuchEdit.value});
-      itemHowMuchEdit.addEventListener("blur", () => blurOnitemHowMuchEdit(index));
+      itemHowMuchEdit.addEventListener("change", () => {
+        inputHowMuchValue = itemHowMuchEdit.value;
+      });
+      itemHowMuchEdit.addEventListener("blur", () => blurOnItemHowMuchEdit(index));
     } else {
       let itemHowMuch = document.createElement("p"); //if DON't  edit itemHowMuch
       itemHowMuch.id = `itemHowMuch_${index}`;
       itemHowMuch.className = "itemHowMuch";
       itemHowMuch.innerHTML = list[index].money;
       itemOfList.appendChild(itemHowMuch);
-      itemHowMuch.addEventListener("dblclick", () => {dbClickItemHowMuch(index)});
-      itemHowMuch.addEventListener("doubletap", () => {dbClickItemHowMuch(index)});
+      itemHowMuch.addEventListener("dblclick", () => dbClickItemHowMuch(index));
+      itemHowMuch.addEventListener("doubletap", () => dbClickItemHowMuch(index));
     }
     ////////////////////// Pictures /////////////////////////
-    if (editFlag !== index){
+    if (editFlag !== index) {
       let imageEdit = document.createElement("img");// put Edit
       imageEdit.src = "img/edit.svg";
       imageEdit.className = "imageEdit";
       itemChange.appendChild(imageEdit);
-      imageEdit.addEventListener("click", () => {ImageEdit(index)});
+      imageEdit.addEventListener("click", () => ImageEdit(index));
     } else {
       imgDone = document.createElement("img"); //put Done
       imgDone.src = "img/done.svg";
       imgDone.className = "imageDone";
-      imgDone.addEventListener("click", () => {ImageDone(item, index)} );
+      imgDone.addEventListener("click", () => ImageDone(item, index));
       itemChange.appendChild(imgDone);
     }
     let imageDelete = document.createElement("img");//put Delete
     imageDelete.src = "img/delete.svg";
     imageDelete.className = "imageDelete";
     itemChange.appendChild(imageDelete);
-    imageDelete.addEventListener("click", () => {ImageDelete(index)});
+    imageDelete.addEventListener("click", () => ImageDelete(index));
     itemOfList.appendChild(itemChange);//put wrapper for picture in end of each  "li"
     total = total + Number(item.money);
   })  
