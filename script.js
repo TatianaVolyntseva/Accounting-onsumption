@@ -79,7 +79,7 @@ addElementToList = async () => {
     list = result.data;
     localStorage.setItem("list", JSON.stringify(list));  
     cleanValues();
-  } else if (inputWhereValue ==="" && inputHowMuchValue) {
+  } else if (inputWhereValue === "" && inputHowMuchValue) {
     alert("Пожалуйста, заполните первое поле");
   } else if (inputWhereValue  && inputHowMuchValue === "") {
     alert("Пожалуйста, заполните второе поле");
