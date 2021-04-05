@@ -84,9 +84,7 @@
   #totalSum::before { 
     content: "Итого: ";
   }
-  #totalSum::after { 
-    content: " p.";
-  }
+ 
   #containerForOutnput{
     width: 680px;
     margin: 0 auto;
@@ -101,6 +99,7 @@
   .itemWhere{
     width: 250px;
     overflow: auto;
+    text-overflow: ellipsis;
   }
   .itemDate{
     width: 150px;
@@ -110,6 +109,10 @@
     width: 120px;
     margin-left: 10px;
     text-align: right;
+    overflow: auto;
+  }
+  .itemHowMuch::after{
+    content: " p.";
   }
   .itemWhereEdit {
     width: 250px;
