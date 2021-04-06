@@ -286,7 +286,7 @@ render = () => {
       let itemHowMuch = document.createElement("p"); //if DON't  edit itemHowMuch
       itemHowMuch.id = `itemHowMuch_${index}`;
       itemHowMuch.className = "itemHowMuch";
-      itemHowMuch.innerHTML = list[index].money;
+      itemHowMuch.innerHTML = `${list[index].money} p.`;
       itemOfList.appendChild(itemHowMuch);
       itemHowMuch.addEventListener("dblclick", () => dbClickItemHowMuch(index));
       itemHowMuch.addEventListener("doubletap", () => dbClickItemHowMuch(index));
