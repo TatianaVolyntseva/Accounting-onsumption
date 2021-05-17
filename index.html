@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
@@ -14,31 +14,33 @@
     </head>
     <body>
 
-        <div id = "commonContainer" class="commonContainer" >
-
-            <div class = "containerTitle">
-              <h1 class = >Учет моих расходов</h1>
+        <div id="commonContainer" class="commonContainer" >
+            <div class="containerTitle">
+              <h1>Учет моих расходов</h1>
             </div>
-
-            <div id = "wrapper" class = "wrapper">
-
-                <div class = "containerForInput">
+            <div id="wrapper" class="wrapper">
+                <div class="containerForInput">
                     <label>
-                    Куда было потрачено: <input id = "inputWhere" type = "text" placeholder="Куда было потрачено">
+                      Куда было потрачено:
+                      <input id="inputWhere" 
+                        type="text"
+                        placeholder="Куда было потрачено">
                     </label>
                     <label>
-                    Сколько было потрачено: <input id = "inputHowMuch" type = "number" placeholder="Сколько было потрачено">
+                      Сколько было потрачено:
+                      <input id="inputHowMuch" 
+                        type="number"
+                        placeholder="Сколько было потрачено">
                     </label>
-
-                    <button id = "inputButton" >Добавить</button> 
+                    <button id="inputButton">Добавить</button> 
                 </div>
-
-                <div id = "containertotalSum">
-                   <div id = forDeleteTotal></div>
+                <div id="containertotalSum">
+                   <p id=total>0</p>
                 </div>
-
+                  <div id='containerForOutnput'>
+                    <ol id='allItemsHere' className='allItemsHere'></ol>
+                 </div>             
             </div>
-
         </div>
         
 </body>
